@@ -1,12 +1,11 @@
-function removeElement(array, item) {
-
-   array.splice(item-1 , 1)
-
-   console.log(array);
+function pow(num, degree) {
+   if(degree === 0) {
+      return 1;
+   } else {
+      const result = num * pow(num, degree - 1);
+      return result;
+   }
 }
 
-array2 = [1, 2, 3, 4, 5, 6, 7];
-
-removeElement(array2, 5);
-
+console.log(pow(5,4));
 
