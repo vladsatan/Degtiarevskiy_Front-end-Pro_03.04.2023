@@ -7,8 +7,6 @@ const getSum = () => {
 
 const getSum1 = getSum();
 
-console.log(getSum1);
-
 console.log(getSum1(3));
 console.log(getSum1(5));
 console.log(getSum1(20));
