@@ -1,11 +1,14 @@
-function pow(num, degree) {
-   if(degree === 0) {
-      return 1;
-   } else {
-      const result = num * pow(num, degree - 1);
-      return result;
+const getSum = () => {
+   let sum = 0;
+   return function(number) {
+      return sum += number; 
    }
 }
 
-console.log(pow(5,4));
+const getSum1 = getSum();
 
+console.log(getSum1);
+
+console.log(getSum1(3));
+console.log(getSum1(5));
+console.log(getSum1(20));
