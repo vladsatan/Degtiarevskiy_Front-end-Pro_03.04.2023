@@ -1,60 +1,48 @@
 class Human {
-    constructor(name,gender) {
+    constructor(name,age) {
         this.name = name;
-        this.gender = gender;
+        this.age = age;
+    }
+
+    getHumanInfo() {
+        console.log(`Имя - ${this.name}. Возраст - ${this.age}`);
     }
 }
 
-class Flat {
-    residents = [];
+class Car extends Human {
 
-    addResidents(obj) {
-        this.residents.push(obj)
-        return this.residents
-    }
-}
+    owner = {};
 
-class House {
-
-    arrayOfFlets = [];
-
-    constructor(numOfFlats) {
-        this.numOfFlats = numOfFlats;
+    constructor(mark, model,yearOfEgition, licensePlate){
+      super()
+      this.mark = mark;
+      this.model = model;
+      this.yearOfEgition = yearOfEgition;
+      this.licensePlate = licensePlate;
     }
 
-    addFlat(flet){
-        if(this.numOfFlats <= this.arrayOfFlets.length){
-            console.log('Количество квартир в этом доме достигло максимального значения')
-        }else{
-            this.arrayOfFlets.push(flet)
+    setOwner(owner){
+        if(owner.age >= 18){
+            this.owner = owner
+        }else {
+            console.log('К сожалению, вы еще не достигли 18 лет!')
         }
     }
 
+    getCarInfo(){
+       console.log(`Марка автомобиля: ${this.mark}, модель: ${this.model}, год выпуска: ${this.yearOfEgition}, номерной знак: ${this.licensePlate}.`)
+       this.owner.getHumanInfo()
+    }
+
 }
 
-const Vlad = new Human('Vlad', 'male');
-const Danil = new Human('Danil', 'male');
-const Vika = new Human('Vika', 'female');
-const Masha = new Human('Masha', 'female');
+const Vlad = new Human('Vlad', 20);
+const Oleg = new Human('Oleg', 17);
 
-const Flat1 = new Flat();
-const Flat2 = new Flat();
+const Yoyota = new Car('Yoyota', 'RAV4', 2021, 'BO2865BT');
+const Mercedes = new Car('Mercedes-Benz', 'A-Class', 2022, 'CB8136AX');
 
-Flat1.addResidents(Danil)
-Flat1.addResidents(Vika)
-Flat1.addResidents(Masha)
+Yoyota.setOwner(Vlad)
+Mercedes.setOwner(Oleg)
 
-Flat2.addResidents(Vlad)
-Flat2.addResidents(Masha)
-
-const houseNumber1 = new House(2);
-const houseNumber2 = new House(1);
-
-houseNumber1.addFlat(Flat1)
-houseNumber1.addFlat(Flat2)
-
-houseNumber2.addFlat(Flat1)
-houseNumber2.addFlat(Flat2)
-
-
-
+console.log(Yoyota.getCarInfo());
