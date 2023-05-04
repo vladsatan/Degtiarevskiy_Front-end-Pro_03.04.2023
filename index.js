@@ -1,47 +1,96 @@
-class Human {
-    constructor(name,age) {
+class Students {
+
+    attendanceArray = new Array(25);
+    constructor(name, surname, age, estimates) {
         this.name = name;
+        this.surname = surname;
         this.age = age;
+        this.estimates = estimates;
     }
 
-    getHumanInfo() {
-        console.log(`Имя - ${this.name}. Возраст - ${this.age}`);
-    }
-}
-
-class Car extends Human {
-
-    owner = {};
-
-    constructor(mark, model,yearOfEdition, licensePlate){
-      super()
-      this.mark = mark;
-      this.model = model;
-      this.yearOfEgition = yearOfEdition;
-      this.licensePlate = licensePlate;
+    getAge(){
+        return this.age
     }
 
-    setOwner(owner){
-        if(owner.age >= 18){
-            this.owner = owner
-        }else {
-            console.log('К сожалению, вы еще не достигли 18 лет!')
+    GPA(){
+        let gpa = 0;
+        this.estimates.forEach(e=>{
+            gpa += e
+        })
+        return gpa/this.estimates.length
+    }
+
+    present(){
+       for (let i = 0; i < this.attendanceArray.length; i++){
+           if(typeof this.attendanceArray[i] === 'undefined'){
+               this.attendanceArray[i] = true
+               break;
+           }
+       }
+       return this.attendanceArray
+    }
+
+    absent(){
+        for (let i = 0; i < this.attendanceArray.length; i++){
+            if(typeof this.attendanceArray[i] === 'undefined'){
+                this.attendanceArray[i] = false
+                break;
+            }
+        }
+        return this.attendanceArray
+    }
+
+    summary() {
+
+        let gpa = this.GPA();
+        let attendedClasses = 0;
+        let numberOfClasses = 0;
+        this.attendanceArray.forEach(e => {
+            if (e === true) {
+                attendedClasses++
+            }
+            if(typeof e !== 'undefined'){
+                numberOfClasses++
+            }
+        })
+
+        let attended_K = attendedClasses/numberOfClasses
+
+        if(gpa > 90 && attended_K > 0.9){
+            return 'Молодець!'
+        } else if (gpa > 90 || attended_K > 0.9){
+            return  "Добре, але можна краще..."
+        } else {
+            return "Редиска!"
         }
     }
 
-    getCarInfo(){
-       console.log(`Марка автомобиля: ${this.mark}, модель: ${this.model}, год выпуска: ${this.yearOfEgition}, номерной знак: ${this.licensePlate}.`)
-       this.owner.getHumanInfo()
-    }
 
 }
 
-const Vlad = new Human('Vlad', 20);
-const Oleg = new Human('Oleg', 17);
+const Vlad = new Students('Vlad', 'Degtiarevskiy', 20, [100,90,100]);
+const Igor = new Students('Igor', 'Stifutin', 25, [70,70,100]);
+const David = new Students('David', 'Nebeeridze', 28, [100,50,60])
 
-const Yoyota = new Car('Yoyota', 'RAV4', 2021, 'BO2865BT');
-const Mercedes = new Car('Mercedes-Benz', 'A-Class', 2022, 'CB8136AX');
+console.log(Vlad.getAge(),Igor.getAge(),David.getAge())
 
-Yoyota.setOwner(Vlad)
-Mercedes.setOwner(Oleg)
+Vlad.present()
+Vlad.present()
+Vlad.present()
 
+Igor.present()
+Igor.present()
+Igor.present()
+
+David.present()
+David.present()
+David.absent()
+
+console.log(Vlad)
+console.log(Vlad.summary())
+
+console.log(Igor)
+console.log(Igor.summary())
+
+console.log(David)
+console.log(David.summary())
