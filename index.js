@@ -13,11 +13,11 @@ class Car extends Human {
 
     owner = {};
 
-    constructor(mark, model,yearOfEgition, licensePlate){
+    constructor(mark, model,yearOfEdition, licensePlate){
       super()
       this.mark = mark;
       this.model = model;
-      this.yearOfEgition = yearOfEgition;
+      this.yearOfEgition = yearOfEdition;
       this.licensePlate = licensePlate;
     }
 
@@ -45,4 +45,3 @@ const Mercedes = new Car('Mercedes-Benz', 'A-Class', 2022, 'CB8136AX');
 Yoyota.setOwner(Vlad)
 Mercedes.setOwner(Oleg)
 
-console.log(Yoyota.getCarInfo());
