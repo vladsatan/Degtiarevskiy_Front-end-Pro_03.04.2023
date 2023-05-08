@@ -1,96 +1,128 @@
-class Students {
-
-    attendanceArray = new Array(25);
-    constructor(name, surname, age, estimates) {
-        this.name = name;
-        this.surname = surname;
-        this.age = age;
-        this.estimates = estimates;
-    }
-
-    getAge(){
-        return this.age
-    }
-
-    GPA(){
-        let gpa = 0;
-        this.estimates.forEach(e=>{
-            gpa += e
-        })
-        return gpa/this.estimates.length
-    }
-
-    present(){
-       for (let i = 0; i < this.attendanceArray.length; i++){
-           if(typeof this.attendanceArray[i] === 'undefined'){
-               this.attendanceArray[i] = true
-               break;
-           }
-       }
-       return this.attendanceArray
-    }
-
-    absent(){
-        for (let i = 0; i < this.attendanceArray.length; i++){
-            if(typeof this.attendanceArray[i] === 'undefined'){
-                this.attendanceArray[i] = false
-                break;
-            }
-        }
-        return this.attendanceArray
-    }
-
-    summary() {
-
-        let gpa = this.GPA();
-        let attendedClasses = 0;
-        let numberOfClasses = 0;
-        this.attendanceArray.forEach(e => {
-            if (e === true) {
-                attendedClasses++
-            }
-            if(typeof e !== 'undefined'){
-                numberOfClasses++
-            }
-        })
-
-        let attended_K = attendedClasses/numberOfClasses
-
-        if(gpa > 90 && attended_K > 0.9){
-            return 'Молодець!'
-        } else if (gpa > 90 || attended_K > 0.9){
-            return  "Добре, але можна краще..."
-        } else {
-            return "Редиска!"
-        }
-    }
-
-
+const SIZE_SMALL = {
+   name: 'small',
+   price: 50,
+   calories: 20
+}
+const SIZE_BIG = {
+   name: 'big',
+   price: 100,
+   calories: 40
 }
 
-const Vlad = new Students('Vlad', 'Degtiarevskiy', 20, [100,90,100]);
-const Igor = new Students('Igor', 'Stifutin', 25, [70,70,100]);
-const David = new Students('David', 'Nebeeridze', 28, [100,50,60])
+const STUFFING_CHEESE = {
+   name: 'cheese',
+   price: 10,
+   calories: 20
+}
 
-console.log(Vlad.getAge(),Igor.getAge(),David.getAge())
+const STUFFING_SALAD = {
+   name: 'salad',
+   price: 20,
+   calories: 5
+}
 
-Vlad.present()
-Vlad.present()
-Vlad.present()
+const STUFFING_POTATO = {
+   name: 'potato',
+   price: 15,
+   calories: 10
+}
 
-Igor.present()
-Igor.present()
-Igor.present()
+const TOPPING_MAYO = {
+   name: 'mayonnaise',
+   price: 20,
+   calories: 5
+}
 
-David.present()
-David.present()
-David.absent()
+const TOPPING_SAUCE = {
+   name: 'sauce',
+   price: 15,
+   calories: 0
+}
 
-console.log(Vlad)
-console.log(Vlad.summary())
 
-console.log(Igor)
-console.log(Igor.summary())
+class Hamburger {
 
-console.log(David)
-console.log(David.summary())
+   constructor(size, stuffing) {
+      this.size = size;
+      this.stuffing = stuffing;
+      this.toppings = [];
+   }
+
+  static get SIZE_SMALL() {
+   return SIZE_SMALL
+  }
+
+  static get SIZE_BIG() {
+   return SIZE_BIG
+  }
+
+  static get STUFFING_CHEESE() {
+   return STUFFING_CHEESE
+  }
+
+  static get STUFFING_SALAD() {
+   return STUFFING_SALAD
+  }
+
+  static get STUFFING_POTATO() {
+   return STUFFING_POTATO
+  }
+
+  static get TOPPING_MAYO() {
+   return TOPPING_MAYO
+  }
+
+  static get TOPPING_SAUCE() {
+   return TOPPING_SAUCE
+  }
+
+  addTopping(topping){
+   this.toppings.push(topping)
+  }
+
+  calculate() {
+   let array = [this.size, this.stuffing];
+   let kcal = 0;
+
+   if(this.toppings.length > 0){
+      this.toppings.forEach(e=>{
+         array.push(e);
+      })
+   }
+
+   array.forEach(e=>{
+      kcal += e.calories
+   })
+
+   return `${kcal} kcal`
+  }
+
+  calculatePrice() {
+   let array = [this.size, this.stuffing];
+   let price = 0;
+
+   if(this.toppings.length > 0){
+      this.toppings.forEach(e=>{
+         array.push(e);
+      })
+   }
+
+   array.forEach(e=>{
+      price += e.price
+   })
+
+   return `${price} MNT`
+  }
+  
+}
+
+let hamburger = new Hamburger(Hamburger.SIZE_SMALL, Hamburger.STUFFING_CHEESE);
+
+hamburger.addTopping(Hamburger.TOPPING_MAYO);
+
+console.log("Calories: " + hamburger.calculate());
+console.log("Price: " + hamburger.calculatePrice());
+
+hamburger.addTopping(Hamburger.TOPPING_SAUCE);
+
+console.log("Price with sauce: " + hamburger.calculatePrice());
