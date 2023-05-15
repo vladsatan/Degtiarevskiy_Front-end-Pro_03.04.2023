@@ -2,7 +2,8 @@ const root = document.getElementById('root');
 const img = document.createElement('img');
 
 let randomNumber = Math.floor(Math.random() * 10)
-if(randomNumber === 0) {
+
+while(randomNumber === 0) {
    randomNumber = Math.floor(Math.random() * 10)
 }
 
