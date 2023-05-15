@@ -1,128 +1,44 @@
-const SIZE_SMALL = {
-   name: 'small',
-   price: 50,
-   calories: 20
-}
-const SIZE_BIG = {
-   name: 'big',
-   price: 100,
-   calories: 40
-}
+const root = document.getElementById('root');
 
-const STUFFING_CHEESE = {
-   name: 'cheese',
-   price: 10,
-   calories: 20
-}
+const arrayOfNumbers = [];
 
-const STUFFING_SALAD = {
-   name: 'salad',
-   price: 20,
-   calories: 5
-}
+let numOfTd = 100;
 
-const STUFFING_POTATO = {
-   name: 'potato',
-   price: 15,
-   calories: 10
-}
-
-const TOPPING_MAYO = {
-   name: 'mayonnaise',
-   price: 20,
-   calories: 5
-}
-
-const TOPPING_SAUCE = {
-   name: 'sauce',
-   price: 15,
-   calories: 0
+for (let i = 1; i <= numOfTd; i++) {
+   arrayOfNumbers.push(i);
 }
 
 
-class Hamburger {
-
-   constructor(size, stuffing) {
-      this.size = size;
-      this.stuffing = stuffing;
-      this.toppings = [];
-   }
-
-  static get SIZE_SMALL() {
-   return SIZE_SMALL
-  }
-
-  static get SIZE_BIG() {
-   return SIZE_BIG
-  }
-
-  static get STUFFING_CHEESE() {
-   return STUFFING_CHEESE
-  }
-
-  static get STUFFING_SALAD() {
-   return STUFFING_SALAD
-  }
-
-  static get STUFFING_POTATO() {
-   return STUFFING_POTATO
-  }
-
-  static get TOPPING_MAYO() {
-   return TOPPING_MAYO
-  }
-
-  static get TOPPING_SAUCE() {
-   return TOPPING_SAUCE
-  }
-
-  addTopping(topping){
-   this.toppings.push(topping)
-  }
-
-  calculate() {
-   let array = [this.size, this.stuffing];
-   let kcal = 0;
-
-   if(this.toppings.length > 0){
-      this.toppings.forEach(e=>{
-         array.push(e);
-      })
-   }
-
-   array.forEach(e=>{
-      kcal += e.calories
-   })
-
-   return `${kcal} kcal`
-  }
-
-  calculatePrice() {
-   let array = [this.size, this.stuffing];
-   let price = 0;
-
-   if(this.toppings.length > 0){
-      this.toppings.forEach(e=>{
-         array.push(e);
-      })
-   }
-
-   array.forEach(e=>{
-      price += e.price
-   })
-
-   return `${price} MNT`
-  }
-  
+function createTable(parent, cols, rows) {
+	let table = document.createElement('table');
+	
+	for (let i = 0; i < rows; i++) {
+		let tr = document.createElement('tr');
+		
+		for (let j = 0; j < cols; j++) {
+			let td = document.createElement('td');
+         td.style.textAlign = 'center';
+         td.style.width = '30px';
+         td.style.height = '30px';
+         td.style.border = '1px solid black';
+			tr.appendChild(td);
+		}
+		
+		table.appendChild(tr);
+	}
+	
+	parent.appendChild(table);
 }
 
-let hamburger = new Hamburger(Hamburger.SIZE_SMALL, Hamburger.STUFFING_CHEESE);
+createTable(root, 10, 10);
 
-hamburger.addTopping(Hamburger.TOPPING_MAYO);
+const init = document.getElementsByTagName('td');
 
-console.log("Calories: " + hamburger.calculate());
-console.log("Price: " + hamburger.calculatePrice());
+const initArr = Array.from(init);
 
-hamburger.addTopping(Hamburger.TOPPING_SAUCE);
+let counter = 0
 
-console.log("Price with sauce: " + hamburger.calculatePrice());
+for (let i = 0; i < arrayOfNumbers.length; i++){
+   initArr[counter].textContent = arrayOfNumbers[counter];
+   counter++;
+}
