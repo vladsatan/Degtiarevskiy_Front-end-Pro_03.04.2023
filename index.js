@@ -1,128 +1,115 @@
-const SIZE_SMALL = {
-   name: 'small',
-   price: 50,
-   calories: 20
-}
-const SIZE_BIG = {
-   name: 'big',
-   price: 100,
-   calories: 40
-}
+import { data } from "./dataBase.js";
+const root = document.getElementById('root');
+const productsBox = document.getElementById('products');
+const iphone = document.getElementById('iphone');
+const ipad = document.getElementById('ipad');
+const macbook = document.getElementById('macbook');
+const productInfo = document.getElementById('product_info');
 
-const STUFFING_CHEESE = {
-   name: 'cheese',
-   price: 10,
-   calories: 20
-}
+let arrayOfProduct = []
 
-const STUFFING_SALAD = {
-   name: 'salad',
-   price: 20,
-   calories: 5
-}
+function createProductCard (item) {
 
-const STUFFING_POTATO = {
-   name: 'potato',
-   price: 15,
-   calories: 10
-}
+   const card = createEl('div', 'card')
+   const img = createEl('img', 'card-image')
+   const h3 = createEl('h3', 'card-title')
+   const flexColor = createEl('div', 'flex-color')
+   const p = createEl('p')
+   const span = createEl('span')
+   const price = createEl('p', 'price')
 
-const TOPPING_MAYO = {
-   name: 'mayonnaise',
-   price: 20,
-   calories: 5
-}
+   img.src = `./img/${item.photo}`;
+   h3.textContent = item.name;
+   p.textContent = 'color: '
+   span.textContent = item.color;
+   span.style.color = item.color;
+   span.style.fontSize = '17px'
+   price.textContent = item.price
 
-const TOPPING_SAUCE = {
-   name: 'sauce',
-   price: 15,
-   calories: 0
-}
+   p.append(span)
+   flexColor.append(p)
+   card.append(img, h3, flexColor, price)
+   productsBox.append(card)
 
-
-class Hamburger {
-
-   constructor(size, stuffing) {
-      this.size = size;
-      this.stuffing = stuffing;
-      this.toppings = [];
-   }
-
-  static get SIZE_SMALL() {
-   return SIZE_SMALL
-  }
-
-  static get SIZE_BIG() {
-   return SIZE_BIG
-  }
-
-  static get STUFFING_CHEESE() {
-   return STUFFING_CHEESE
-  }
-
-  static get STUFFING_SALAD() {
-   return STUFFING_SALAD
-  }
-
-  static get STUFFING_POTATO() {
-   return STUFFING_POTATO
-  }
-
-  static get TOPPING_MAYO() {
-   return TOPPING_MAYO
-  }
-
-  static get TOPPING_SAUCE() {
-   return TOPPING_SAUCE
-  }
-
-  addTopping(topping){
-   this.toppings.push(topping)
-  }
-
-  calculate() {
-   let array = [this.size, this.stuffing];
-   let kcal = 0;
-
-   if(this.toppings.length > 0){
-      this.toppings.forEach(e=>{
-         array.push(e);
-      })
-   }
-
-   array.forEach(e=>{
-      kcal += e.calories
+   card.addEventListener('click', () =>{
+      createInfoCard(item);
    })
 
-   return `${kcal} kcal`
-  }
-
-  calculatePrice() {
-   let array = [this.size, this.stuffing];
-   let price = 0;
-
-   if(this.toppings.length > 0){
-      this.toppings.forEach(e=>{
-         array.push(e);
-      })
-   }
-
-   array.forEach(e=>{
-      price += e.price
-   })
-
-   return `${price} MNT`
-  }
-  
 }
 
-let hamburger = new Hamburger(Hamburger.SIZE_SMALL, Hamburger.STUFFING_CHEESE);
+function createEl(el, className){
+   const element = document.createElement(el);
+   if(className){
+      element.classList.add(className)
+   }
+   return element
+}
 
-hamburger.addTopping(Hamburger.TOPPING_MAYO);
+function getEvent(array,categori){
 
-console.log("Calories: " + hamburger.calculate());
-console.log("Price: " + hamburger.calculatePrice());
+   array = []
 
-hamburger.addTopping(Hamburger.TOPPING_SAUCE);
+   productsBox.innerHTML = ''
 
-console.log("Price with sauce: " + hamburger.calculatePrice());
+   array = data.filter(e => e.categori === categori);
+
+   array.forEach(element => {
+      createProductCard(element)
+   });
+
+}
+
+function createInfoCard(item){
+
+    const infoCard = createEl('div', 'product_info_card')
+    const h1 = createEl('h1', 'product_info_title')
+    const img = createEl('img', 'product_info_img')
+    const giscriptions = createEl('p')
+    const flexInfo = createEl('div', 'flex-info')
+    const price = createEl('p')
+    const button = createEl('button', 'buy_btn')
+
+    h1.textContent = item.name
+    img.src = `./img/${item.photo}`
+    giscriptions.textContent = item.giscriptions
+    price.textContent = item.price
+    button.textContent = 'Buy Now'
+
+    flexInfo.append(price,button)
+    infoCard.append(h1,img,giscriptions,flexInfo)
+
+    productInfo.innerHTML = ''
+    productInfo.append(infoCard) 
+
+    button.addEventListener('click',()=>{
+      alert('Product purchased!');
+      location.reload()
+    })
+}
+
+function removeClass(item){
+   const list = Array.from(document.getElementsByTagName('li'))  
+   list.forEach(e => {
+      if(e.className === 'item active'){
+         e.classList.remove('active')
+      }
+   })
+   item.classList.add('active')
+}
+
+iphone.addEventListener('click', ()=> {
+   getEvent(arrayOfProduct,'iphone')
+   removeClass(iphone)
+});
+
+ipad.addEventListener('click', ()=>{ 
+   getEvent(arrayOfProduct,'ipad')
+   removeClass(ipad)
+});
+
+macbook.addEventListener('click', ()=> {
+   getEvent(arrayOfProduct,'macbook')
+   removeClass(macbook)
+});
+
+

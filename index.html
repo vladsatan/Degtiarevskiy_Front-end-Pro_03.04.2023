@@ -4,9 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Dream-Shop</title>
 </head>
-<body>
-    <script src="./index.js"></script>
+<body id="root">
+
+         <h1 class="title">dream-shop</h1>
+
+         <div class="container">
+            <div class="categories">
+                <h2>categories</h2>
+                <ul>
+                    <li class="item" id="iphone" >iPhone</li>
+                    <li class="item" id="ipad" >iPad</li>
+                    <li class="item" id="macbook" >MacBook</li>
+                </ul>
+            </div>
+            <div class="products" id="products"></div>
+            <div class="product_info" id="product_info"></div>
+    </div>
+
+
+    <script type="module" src="./index.js"></script>
 </body>
 </html>
