@@ -18,7 +18,7 @@ function createCell(text){
     let address = document.getElementById("address").value;
     let languages = [];
     let checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
-    for (var i = 0; i < checkboxes.length; i++) {
+    for (let i = 0; i < checkboxes.length; i++) {
         languages.push(checkboxes[i].value);
     }
 
