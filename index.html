@@ -21,7 +21,65 @@
                 </ul>
             </div>
             <div class="products" id="products"></div>
-            <div class="product_info" id="product_info"></div>
+            <div class="product_info" id="product_info">
+                <div class="product-info-container" id="product_info_container"></div>
+                <div class="order-container">
+                <div class="order-box-close" id="order-box">
+                    <form action="" id="form">
+                    <h1 class="order-title">Оформление заказа</h1>
+                    <label for="name">*Имя</label>
+                    <input type="text" id="name">
+                        <p id="error-1"></p>
+                    <label for="surname">*Фамилия</label>
+                    <input type="text" id="surname">
+                        <p id="error-2"></p>
+                    <label for="patronymic">*Отчество</label>
+                    <input type="text" id="patronymic">
+                        <p id="error-3"></p>
+                    <label for="city">*Выберете город</label>
+                    <select id="city">
+                        <option value="-">не выбрано</option>
+                        <option value="Киев">Киев</option>
+                        <option value="Днепр">Днепр</option>
+                        <option value="Львов">Львов</option>
+                    </select>
+                        <p id="error-4"></p>
+                    <label for="postOffice">*Отделение новой почты</label>
+                    <select id="postOffice">
+                        <option value="-">не выбрано</option>
+                        <option value="№1">№1</option>
+                        <option value="№2">№2</option>
+                        <option value="№3">№3</option>
+                        <option value="№4">№4</option>
+                        <option value="№5">№5</option>
+                    </select>
+                        <p id="error-5"></p>
+                    <p class="paymentTitle">*Способ оплаты</p>
+                    
+                   <div>
+
+                    <input type="radio" name="payment" id="COD" value="Наложенный платеж">
+                    <label for="COD" class="r-1">Наложенный платеж</label>
+                
+                    <input type="radio" name="payment" id="card-payment" value="Банковская карта">
+                    <label for="card-payment">Банковская карта</label>
+                
+                   </div>
+                        <p id="error-6"></p>
+        
+                    <label for="quantity">*Количество товара</label>
+                    <input type="number" name="quantity" id="quantity">
+
+                        <p id="error-7"></p>
+
+                    <label for="comments">Комментарии к заказу</label>
+                    <textarea name="comments" id="comments" cols="30" rows="10"></textarea>
+                     <p id="error-text"></p>
+                    <button class="order-btn">Оформить заказ</button>
+                </form>
+                </div>
+            </div>
+            </div>
     </div>
 
 
