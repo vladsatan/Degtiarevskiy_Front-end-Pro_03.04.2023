@@ -1,88 +1,67 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="style.css">
-    <title>Dream-Shop</title>
+    <title>Форма реєстрації</title>
 </head>
-<body id="root">
+<body>
+<div class="container">
+<h1>Форма реєстрації</h1>
+<form id="registration-form">
+    <label for="first-name">Ім'я:</label>
+    <input class="textInput" type="text" id="first-name" required>
+    <br>
+    <label for="last-name">Прізвище:</label>
+    <input class="textInput" type="text" id="last-name" required>
+    <br>
+    <label for="dob">Дата народження:</label>
+    <input class="textInput" type="text" id="dob" required>
+    <br>
 
-         <h1 class="title">dream-shop</h1>
-
-         <div class="container">
-            <div class="categories">
-                <h2>categories</h2>
-                <ul>
-                    <li class="item" id="iphone" >iPhone</li>
-                    <li class="item" id="ipad" >iPad</li>
-                    <li class="item" id="macbook" >MacBook</li>
-                </ul>
-            </div>
-            <div class="products" id="products"></div>
-            <div class="product_info" id="product_info">
-                <div class="product-info-container" id="product_info_container"></div>
-                <div class="order-container">
-                <div class="order-box-close" id="order-box">
-                    <form action="" id="form">
-                    <h1 class="order-title">Оформление заказа</h1>
-                    <label for="name">*Имя</label>
-                    <input type="text" id="name">
-                        <p id="error-1"></p>
-                    <label for="surname">*Фамилия</label>
-                    <input type="text" id="surname">
-                        <p id="error-2"></p>
-                    <label for="patronymic">*Отчество</label>
-                    <input type="text" id="patronymic">
-                        <p id="error-3"></p>
-                    <label for="city">*Выберете город</label>
-                    <select id="city">
-                        <option value="-">не выбрано</option>
-                        <option value="Киев">Киев</option>
-                        <option value="Днепр">Днепр</option>
-                        <option value="Львов">Львов</option>
-                    </select>
-                        <p id="error-4"></p>
-                    <label for="postOffice">*Отделение новой почты</label>
-                    <select id="postOffice">
-                        <option value="-">не выбрано</option>
-                        <option value="№1">№1</option>
-                        <option value="№2">№2</option>
-                        <option value="№3">№3</option>
-                        <option value="№4">№4</option>
-                        <option value="№5">№5</option>
-                    </select>
-                        <p id="error-5"></p>
-                    <p class="paymentTitle">*Способ оплаты</p>
-                    
-                   <div>
-
-                    <input type="radio" name="payment" id="COD" value="Наложенный платеж">
-                    <label for="COD" class="r-1">Наложенный платеж</label>
-                
-                    <input type="radio" name="payment" id="card-payment" value="Банковская карта">
-                    <label for="card-payment">Банковская карта</label>
-                
-                   </div>
-                        <p id="error-6"></p>
-        
-                    <label for="quantity">*Количество товара</label>
-                    <input type="number" name="quantity" id="quantity">
-
-                        <p id="error-7"></p>
-
-                    <label for="comments">Комментарии к заказу</label>
-                    <textarea name="comments" id="comments" cols="30" rows="10"></textarea>
-                     <p id="error-text"></p>
-                    <button class="order-btn">Оформить заказ</button>
-                </form>
-                </div>
-            </div>
-            </div>
+    <div>
+    <label>Стать:</label>
+    <label for="male">Чоловік</label>
+    <input type="radio" id="male" name="gender" value="Чоловік" required>
+    <label for="female">Жінка</label>
+    <input type="radio" id="female" name="gender" value="Жінка" required>
     </div>
+    <br>
+    <label for="city">Місто:</label>
+    <select id="city" required>
+        <option value="">Виберіть місто</option>
+        <option value="Київ">Київ</option>
+        <option value="Львів">Львів</option>
+        <option value="Одеса">Одеса</option>
+        <option value="Дніпро">Одеса</option>
+        <option value="Харків">Одеса</option>
 
+    </select>
+    <br>
+    <label for="address">Адреса:</label>
+    <textarea id="address" required></textarea>
+    <br>
+    <label>Мови, якими володієте:</label>
+    <div>
+    <input type="checkbox" id="english" value="Англійська">
+    <label for="english">Англійська</label>
+        <br>
+    <input type="checkbox" id="french" value="Французька">
+    <label for="french">Французька</label>
+        <br>
+    <input type="checkbox" id="spanish" value="Іспанська">
+    <label for="spanish">Іспанська</label>
+   </div>
+    <input class="btn-sub" type="submit" value="Зберегти">
+</form>
 
-    <script type="module" src="./index.js"></script>
+<div id="table-container">
+
+</div>
+
+<script src="./index.js"></script>
 </body>
 </html>
