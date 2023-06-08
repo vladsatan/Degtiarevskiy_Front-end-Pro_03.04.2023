@@ -7,8 +7,120 @@ const macbook = document.getElementById('macbook');
 const productInfoContainer = document.getElementById('product_info_container');
 const form = document.getElementById('form')
 let currentProduct = null;
+let orderHistory = []
 
 let arrayOfProduct = []
+
+let localStorageData = localStorage.getItem('orders')
+
+if(localStorageData){
+    orderHistory = JSON.parse(localStorageData)
+    for(let i = 0; i < orderHistory.length; i++){
+        orderCard(orderHistory[i])
+    }
+}
+
+const myOrdersBtn = document.getElementById('my-orders-btn')
+myOrdersBtn.textContent = `My orders ( ${orderHistory.length} )`
+
+myOrdersBtn.addEventListener('click',()=>{
+    const container = document.getElementById('container')
+    container.classList.remove('container')
+    container.classList.add('close-container')
+    const myOrders = document.getElementById('my-orders-container')
+    myOrders.classList.remove('my-orders-container-close')
+    myOrders.classList.add('my-orders-container')
+})
+
+const back = document.getElementById('back')
+back.addEventListener('click', ()=>{
+    const container = document.getElementById('container')
+    container.classList.remove('close-container')
+    container.classList.add('container')
+    const myOrders = document.getElementById('my-orders-container')
+    myOrders.classList.remove('my-orders-container')
+    myOrders.classList.add('my-orders-container-close')
+})
+
+function orderCard (item) {
+    const card = createEl('div', 'order-card')
+    const date = createEl('p', 'order-date')
+    const itemName = createEl('h3', 'itemName-order')
+    const price = createEl('p', 'order-price')
+    const describeOrder = createEl('div', 'describe-order')
+    const cardBox = createEl('div', 'cardBox')
+
+    let isOpen = false
+
+    date.textContent = item.order.date
+    itemName.textContent = item.product.name
+    price.textContent = `${item.order.price} $`
+
+    card.append(date,itemName,price)
+    const box = document.getElementById('orders-box')
+    cardBox.append(card,describeOrder)
+    box.append(cardBox)
+
+    card.addEventListener('click', ()=>{
+
+        isOpen = !isOpen
+        if(isOpen){
+            let description = setDescribeOfOrder(item)
+            describeOrder.innerHTML = ''
+            describeOrder.append(description)
+        }else {
+            describeOrder.innerHTML = ''
+        }
+    })
+}
+
+function setDescribeOfOrder (item) {
+    const describeCard = createEl('div', 'describeCard')
+    const h1 = createEl('h1', 'titleOfDesCard')
+    const FIO = createEl('p', 'describe-order-text')
+    const city = createEl('p', 'describe-order-text')
+    const postOffice = createEl('p', 'describe-order-text')
+    const paymentMethod = createEl('p', 'describe-order-text')
+    const quantity = createEl('p', 'describe-order-text')
+    const comment = createEl('p', 'describe-order-text')
+    const price = createEl('p', 'describe-price')
+    const img = createEl('img', 'describe-img')
+    const productName = createEl('h3', 'productName-describe')
+    const deleteButton = createEl('button', 'deleteBtn')
+
+    h1.textContent = 'Детали заказа'
+    FIO.textContent = `ФИО получателя: ${item.order.surname} ${item.order.name} ${item.order.patronymic}`
+    city.textContent = `Город: ${item.order.city}`
+    postOffice.textContent = `Отделение новой почты: ${item.order.postOffice}`
+    paymentMethod.textContent = `Способ оплаты: ${item.order.paymentMethod}`
+    quantity.textContent = `Количество товара: ${item.order.quantity}`
+    comment.textContent = `Комментарии к заказу: ${item.order.comments}`
+    price.textContent = `Цена: ${item.order.price} $`
+    img.src = `/img/${item.product.photo}`
+    productName.textContent = item.product.name
+    deleteButton.textContent = 'Удалить заказ'
+
+    describeCard.append(h1,img,productName,FIO,city,postOffice,paymentMethod,quantity,comment,price,deleteButton)
+
+    deleteButton.addEventListener('click', ()=>{
+        orderHistory = orderHistory.filter(e => {
+            if(e.product.name != item.product.name || e.order.price != item.order.price || e.order.quantity != item.order.quantity || e.order.date != item.order.date){
+                return e}})
+
+        localStorage.removeItem('orders')
+        localStorage.setItem('orders', JSON.stringify(orderHistory))
+        myOrdersBtn.textContent = `My orders ( ${orderHistory.length} )`
+        const box = document.getElementById('orders-box')
+        box.innerHTML = ''
+        for(let i = 0; i < orderHistory.length; i++){
+            orderCard(orderHistory[i])
+        }
+
+    })
+
+    return describeCard
+
+}
 
 function createProductCard (item) {
 
@@ -263,6 +375,13 @@ function createPopup(productObj,orderObj){
     submit.addEventListener('click',()=>{
         popupBg.remove()
     })
+
+    orderObj.price = fullPrice
+
+    return {
+       product: productObj,
+       order: orderObj
+    }
 }
 
 function openOrderForm(){
@@ -301,7 +420,16 @@ form.addEventListener('submit', (e)=> {
     let validInfo =  orderValidator()
     if(validInfo){
         closeOrderForm()
-        createPopup(currentProduct,validInfo)
+       let info = createPopup(currentProduct,validInfo)
+        let array = orderHistory
+        array.push(info)
+        localStorage.setItem('orders', JSON.stringify(array))
+        myOrdersBtn.textContent = `My orders ( ${orderHistory.length} )`
+        const box = document.getElementById('orders-box')
+        box.innerHTML = ''
+        for(let i = 0; i < orderHistory.length; i++){
+            orderCard(orderHistory[i])
+        }
     }
 });
 

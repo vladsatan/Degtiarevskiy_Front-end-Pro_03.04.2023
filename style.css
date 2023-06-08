@@ -8,6 +8,16 @@ body {
     background-color: #303030;
 }
 
+header {
+    max-width: 1440px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    align-items: center;
+    border-bottom: 2px solid white;
+    margin: 20px auto 100px auto;
+}
+
 .container {
   max-width: 1440px;
   margin: 0 auto;
@@ -16,14 +26,71 @@ body {
   align-items: flex-start;
 }
 
+.close-container {
+    display: none;
+}
+
+.my-orders-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    text-align: center;
+    padding-left: 200px;
+}
+
+.my-orders-container-close {
+    display: none;
+}
+
+.flex-myOrder {
+    display: flex;
+}
+
+.my-orders-container h1 {
+    font-size: 40px;
+    color: white;
+    marging-bottom: 50px;
+    text-align: left
+}
+
+#back {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    background-color: #ffffff52;
+    color: white;
+    margin-right: 30px;
+    transition: .2s;
+}
+
+#back:hover {
+    background-color: #ffffffbf;
+}
+
 .title {
     text-align: center;
-    font-size: 60px;
+    font-size: 30px;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     letter-spacing: 5px;
     color: white;
     text-transform: capitalize;
-    padding: 50px;
+}
+
+#my-orders-btn {
+    padding: 13px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+    border-radius: 6px;
+    background-color: rgba(109, 109, 109, 0);
+    transition: .2s;
+    color: white;
+    box-shadow: inset 0px 0px 10px 0px white;
+}
+
+#my-orders-btn:hover {
+    background-color: #939393;
 }
 
 .categories {
@@ -319,4 +386,81 @@ select {
 
 .popup-submit:hover {
     background-color: #131349bf;
+}
+
+#orders-box {
+    margin: 50px auto;
+}
+
+.order-card {
+    display: flex;
+    width: 600px;
+    padding: 10px 20px;
+    margin: 0 auto 15px auto;
+    border: 1px solid white;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    color: white;
+    transition: .3s;
+}
+
+.order-card:hover {
+    background-color: #ffffff70;
+}
+
+.order-date {
+    color: #ffffff9e;
+}
+
+.describeCard {
+    width: 600px;
+    margin: 0 auto 20px auto;
+    padding: 20px;
+    box-shadow: inset 0px 0px 15px white;
+    text-align: left;
+}
+
+.describe-img {
+    float: right;
+    width: 120px;
+    margin-top: -21px;
+}
+
+.titleOfDesCard {
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.productName-describe {
+    color: #afafaf;
+    padding-bottom: 10px;
+    text-decoration: underline;
+}
+
+.describe-order-text {
+    font-size: 17px;
+    color: #c5c5c5;
+    word-wrap: break-word;
+    padding-bottom: 5px;
+}
+
+.describe-price {
+    padding: 10px 0px;
+    color: white;
+}
+
+.deleteBtn {
+    font-size: 17px;
+    padding: 7px;
+    border-radius: 5px;
+    background-color: #7b5183;
+    color: white;
+    outline: none;
+    border: none;
+    transition: .2s;
+}
+
+.deleteBtn:hover {
+    background-color: #7b518378;
 }
