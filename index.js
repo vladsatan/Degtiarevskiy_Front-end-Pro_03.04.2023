@@ -96,7 +96,7 @@ function setDescribeOfOrder (item) {
     quantity.textContent = `Количество товара: ${item.order.quantity}`
     comment.textContent = `Комментарии к заказу: ${item.order.comments}`
     price.textContent = `Цена: ${item.order.price} $`
-    img.src = `/img/${item.product.photo}`
+    img.src = `./img/${item.product.photo}`
     productName.textContent = item.product.name
     deleteButton.textContent = 'Удалить заказ'
 
