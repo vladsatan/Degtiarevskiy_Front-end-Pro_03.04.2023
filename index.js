@@ -7,7 +7,7 @@ function getWeather (city) {
 
     let xhr = new XMLHttpRequest();
 
-    xhr.open("GET", `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=5d066958a60d315387d9492393935c19`, true);
+    xhr.open("GET", `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&APPID=5d066958a60d315387d9492393935c19`, true);
 
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
@@ -55,7 +55,7 @@ function createWheaterCard(item){
 
    city.textContent = item.name
    temp.textContent = `${(item.main.temp).toFixed()}°`
-   img.src = `http://openweathermap.org/img/w/${curSrc}.png`
+   img.src = `https://openweathermap.org/img/w/${curSrc}.png`
    description.textContent = curDescr
    pressure.textContent = `${item.main.pressure} mm`
    humidity.textContent = `${item.main.humidity} %`
