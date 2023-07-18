@@ -1,0 +1,70 @@
+.smile {
+    padding: 15px;
+    background-color: #f5f5f5;
+    width: fit-content;
+    margin-bottom: 30px;
+    margin-right: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.smile h3 {
+ margin-top: 10px;
+ margin-bottom: 20px;
+}
+
+.reaction-box {
+    display: flex;
+}
+
+.smile-img {
+  width: 50px;
+}
+.like{
+    display: flex;
+    align-items: center;
+    padding: 5px;
+}
+.like img {
+    width: 20px;
+    margin-left: 3px;
+}
+
+.save {
+    padding: 5px;
+    margin-left: 10px;
+}
+
+.save-active {
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    transition: .2s;
+    padding: 5px;
+    margin-left: 10px;
+    background-color: #ffe15a;
+}
+
+.save-active img {
+    width: 20px;
+}
+
+.save img {
+    width: 20px;
+}
+
+.like, .save {
+    outline: none;
+    border: none;
+    background-color: #e7e7e7;
+    border-radius: 8px;
+    transition: .2s;
+}
+
+.like:hover {
+    background-color: #ffb9b9;
+}
+
+.save:hover {
+    background-color: #ffe15a;
+}

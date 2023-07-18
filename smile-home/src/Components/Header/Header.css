@@ -1,0 +1,63 @@
+header {
+    color: white;
+    background-color: #282c34;
+    padding: 10px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    width: 50px;
+    margin-left: 10px;
+}
+
+.auth-buttons {
+    display: flex;
+    align-items: center;
+}
+
+.sign-in,
+.sign-up {
+    width: 100px;
+    background-color: #1d92ff;
+    color: white;
+    outline: none;
+    border: none;
+    padding: 10px;
+    text-transform: capitalize;
+    transition: .2s;
+    display: flex;
+    align-items: center;
+}
+
+.sign-in {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-right: 1px solid white;
+}
+
+.sign-up {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-left: 1px solid white;
+}
+
+.sign-in:hover {
+    background-color: #58abfb;
+}
+
+.sign-up:hover {
+    background-color: #58abfb;
+}
+
+.img-btn {
+    width: 20px;
+    margin-left: 10px;
+}

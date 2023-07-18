@@ -1,0 +1,10 @@
+.ContentBox {
+    width: 100%;
+    height: 83vh;
+    overflow-y: scroll;
+    padding: 20px;
+}
+
+.ContentBox::-webkit-scrollbar {
+    display: none;
+}

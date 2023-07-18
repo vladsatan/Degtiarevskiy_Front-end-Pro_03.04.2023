@@ -1,0 +1,26 @@
+.container {
+    position: relative;
+    overflow: hidden;
+    height: 92vh;
+}
+
+.result-space {
+    width: 100%;
+    padding: 20px;
+    background-color: #e7e7e7;
+    text-align: center;
+}
+
+.result-btn {
+    border: none;
+    outline: none;
+    padding: 10px;
+    background-color: #1d92ff;
+    border-radius: 8px;
+    transition: .2s;
+}
+
+.result-btn:hover {
+    background-color: #51abff;
+    border-radius: 0px;
+}
