@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/Smiles-Home/static/css/main.b9acb344.css",
+    "main.js": "/Smiles-Home/static/js/main.6f4225c4.js",
+    "static/media/steep.png": "/Smiles-Home/static/media/steep.a82324c9322b717b81b4.png",
+    "static/media/nothing.png": "/Smiles-Home/static/media/nothing.0043a3d4262c4badfa0d.png",
+    "static/media/crying.png": "/Smiles-Home/static/media/crying.d9db601bbdc3c08a5b53.png",
+    "static/media/smile.png": "/Smiles-Home/static/media/smile.54f4179ff71f32c965e6.png",
+    "static/media/angry.png": "/Smiles-Home/static/media/angry.ff4f853a9c88d41d0b3b.png",
+    "static/media/love.png": "/Smiles-Home/static/media/love.63b13b4dd540ad1fad68.png",
+    "static/media/signup-logo.png": "/Smiles-Home/static/media/signup-logo.9f189cccb22dd0fefd57.png",
+    "static/media/like.png": "/Smiles-Home/static/media/like.a13e3857c7c7f11756ac.png",
+    "index.html": "/Smiles-Home/index.html",
+    "main.b9acb344.css.map": "/Smiles-Home/static/css/main.b9acb344.css.map",
+    "main.6f4225c4.js.map": "/Smiles-Home/static/js/main.6f4225c4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b9acb344.css",
+    "static/js/main.6f4225c4.js"
+  ]
+}
